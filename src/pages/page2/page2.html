@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="!selectedFeed">Ultimos Podcasts</ion-title>
+    <ion-title>{{selectedFeed?.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-spinner *ngIf="loading" id="feed-spiner"></ion-spinner>
+  <ion-list *ngIf="selectedFeed" class="spinner">
+    <ion-item *ngFor="let item of articles" (click)="openPodcast(item)" class="feed-article">
+      <div class="article-title">{{item.title}}</div><br>
+      <p [innerHtml]="item.description"></p>
+    </ion-item>
+  </ion-list>
+  <div *ngIf="!selectedFeed" class="center-placeholder">Por favor selecciona un podcast </div>
+</ion-content>

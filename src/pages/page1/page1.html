@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Podcasts</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let feed of feeds" (click)="openFeed(feed)">
+      {{feed.title}}
+    </button>
+  </ion-list>
+  <button ion-button full (click)="addFeed()" action secondary>
+    <ion-icon name="add"></ion-icon> Añadir podcast
+  </button>
+</ion-content>
